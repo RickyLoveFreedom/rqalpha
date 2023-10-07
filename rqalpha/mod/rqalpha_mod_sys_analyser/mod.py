@@ -513,6 +513,7 @@ class AnalyserMod(AbstractMod):
         result_dict["yearly_risk_free_rates"] = dict(_get_yearly_risk_free_rates(data_proxy, start_date, end_date))
 
         if self._mod_config.output_file:
+            #解决回测报告的数据目录不存在时，自动创建目录
             output_file_path = os.path.dirname(self._mod_config.output_file)
             os.makedirs(output_file_path, exist_ok=True)
             with open(self._mod_config.output_file, 'wb') as f:
